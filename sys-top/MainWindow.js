@@ -1,9 +1,9 @@
-const { BrowserWindow } = require('electron')
+const { BrowserWindow } = require("electron");
 
 class MainWindow extends BrowserWindow {
   constructor(file, isDev) {
     super({
-      title: 'SysTop',
+      title: "SysTop",
       width: isDev ? 800 : 355,
       height: 500,
       icon: `${__dirname}/assets/icons/icon.png`,
@@ -12,15 +12,16 @@ class MainWindow extends BrowserWindow {
       opacity: 0.9,
       webPreferences: {
         nodeIntegration: true,
+        contextIsolation: false,
       },
-    })
+    });
 
-    this.loadFile(file)
+    this.loadFile(file);
 
     if (isDev) {
-      this.webContents.openDevTools()
+      this.webContents.openDevTools();
     }
   }
 }
 
-module.exports = MainWindow
+module.exports = MainWindow;
